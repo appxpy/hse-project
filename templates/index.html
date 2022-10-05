@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira Code:wght@300;400&display=swap');
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #011627;
+            color: #FDFFFC;
+            font-family: 'Fira Code', monospace;
+        }
+
+        div.wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            border-radius: 5px;
+            border: none;
+            padding: 5px;
+            font-size: 20px;
+        }
+
+        input[type="submit"] {
+            font-family: 'Fira Code', monospace;
+            font-weight: 400;
+            width: 200px;
+            height: 40px;
+
+            background: #FEA55F;
+            border-radius: 8px;
+        }
+
+        input[type="text"] {
+            font-family: 'Fira Code', monospace;
+            background: #607B96;
+            transition: background-color 0.5s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            background: #FFFFFF;
+        }
+
+        h2.error {
+            color: #E99287;
+        }
+
+        td {
+            min-width: 300px;
+            border-bottom: 1px solid #1E2D3D;
+        }
+        td.answer {
+            color: #43D9AD;
+            font-size: 13px;
+            padding-left: 20px;
+        }
+
+    </style>
+    <div class="wrapper">
+    <form action="/">
+        <h1>изи ОК по инфе</h1>
+        <input type="text" name="number"/>
+        <input type="submit" value="_calculate" />
+    </form>
+    <br>
+    <h2 class="error">{{error}}</h2>
+    <h2>Результат:</h2>
+</div>
+<div style="overflow:auto">
+    <table class="tg">
+        <tbody>
+          <tr>
+            <td class="question">Число</td>
+            <td class="answer">{{ number }}</td>
+          </tr>
+          <tr>
+            <td class="question">Число в формате uint_32</td>
+            <td class="answer">{{ number_uint }}</td>
+          </tr>
+          <tr>
+            <td class="question">Число в формате uint_32 hex</td>
+            <td class="answer">{{ number_uint_hex }}</td>
+          </tr>
+          <tr>
+            <td class="question">Целая часть</td>
+            <td class="answer">{{ number_int }}</td>
+          </tr>
+          <tr>
+            <td class="question">Дробная часть</td>
+            <td class="answer">{{ number_float }}</td>
+          </tr>
+          <tr>
+            <td class="question">Целая часть в двоичном формате</td>
+            <td class="answer">{{ number_int_bin }}</td>
+          </tr>
+          <tr>
+            <td class="question">Дробная часть в двоичном формате</td>
+            <td class="answer">{{ number_float_bin }}</td>
+          </tr>
+          <tr>
+            <td class="question">Знак</td>
+            <td class="answer">{{ number_sign }}</td>
+          </tr>
+          <tr>
+            <td class="question">Порядок</td>
+            <td class="answer">{{ number_order }}</td>
+          </tr>
+          <tr>
+            <td class="question">Мантисса</td>
+            <td class="answer">{{ number_mantissa }}</td>
+          </tr>
+          <tr>
+            <td class="question">Знак в памяти</td>
+            <td class="answer">{{ number_sign_bin }}</td>
+          </tr>
+          <tr>
+            <td class="question">Порядок в памяти</td>
+            <td class="answer">{{ number_order_bin }}</td>
+          </tr>
+          <tr>
+            <td class="question">Мантисса в памяти</td>
+            <td class="answer">{{ number_mantissa_bin }}</td>
+          </tr>
+          <tr>
+            <td class="question">Число в формате uint_32</td>
+            <td class="answer">{{ true_uint }}</td>
+          </tr>
+          <tr>
+            <td class="question">Число в формате uint_64</td>
+            <td class="answer">{{ true_uint_64 }}</td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+<br>
+</body>
+</html>
