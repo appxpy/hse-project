@@ -84,6 +84,14 @@ def custom_uint32(n):
             }
 
 
+def custom_uint32_backwards(n):
+    if len(n) != 32:
+        return {'error_binary': 'Длина числа не равна 32'}
+    if n.replace("0", "").replace("1", "") != "":
+        return {'error_binary': 'Число не является двоичным'}
+    return {'number_backwards': ctypes.c_float.from_buffer(ctypes.c_uint32(int(f'0b{n}', 2))).value}
+
+
 @app.route('/')
 def index():
     number = request.args.get('number')
@@ -91,7 +99,8 @@ def index():
         float(number)
     except Exception:
         return render_template('index.html', error='Не число')
-    return render_template('index.html', **custom_uint32(float(number)))
+    data = custom_uint32(float(number))
+    return render_template('index.html', **data, **custom_uint32_backwards(number))
 
 
 app.run(host='0.0.0.0', port=80, debug=True)
